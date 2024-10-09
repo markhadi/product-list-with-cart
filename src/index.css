@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply min-h-screen bg-rose-50 text-[16px] leading-[1.2];
+  }
+
+  main {
+    @apply w-full max-w-[1272px] mx-auto px-6 py-6 grid grid-cols-1 gap-[18px] 
+            lg:grid-cols-main lg:gap-8 lg:py-[88px];
+  }
+}
+
+@layer components {
+  .menu-title {
+    @apply font-bold text-[40px] text-rose-900 mb-8;
+  }
+
+  .desserts-grid {
+    @apply grid grid-cols-1 gap-7 
+            sm:grid-cols-2
+            md:grid-cols-3 md:gap-x-6 md:gap-y-8;
+  }
+
+  .dessert-image {
+    @apply block max-h-[212px] rounded-md overflow-hidden
+            md:max-h-[240px];
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .btn-add-to-cart,
+  .btn-quantity-counter {
+    @apply h-11 w-40 flex items-center rounded-full font-semibold text-[14px] transition-all duration-300;
+  }
+
+  .btn-add-to-cart {
+    @apply justify-center gap-2 bg-white border border-rose-900 text-rose-900
+            hover:border-red hover:text-red;
+  }
+
+  .btn-quantity-counter {
+    @apply justify-between px-3 bg-red text-white;
+  }
+
+  .btn-circle {
+    @apply h-[18px] w-[18px] border-2 border-white rounded-full grid place-content-center transition-colors duration-300
+            hover:bg-white;
+  }
+
+  .btn-order {
+    @apply bg-red w-full font-semibold text-white h-[52px] rounded-full hover:bg-rose-600 transition-colors duration-300;
+  }
+
+  .overlay {
+    @apply fixed top-0 left-0 bg-black bg-opacity-50 w-full h-full flex items-end justify-end opacity-0 -z-10
+            lg:items-center lg:justify-center;
+  }
+
+  .modal {
+    @apply bg-white w-full h-max max-h-[90vh] pt-10 px-6 pb-6 rounded-xl overflow-y-auto translate-y-full transition-transform duration-300 ease-in-out
+              lg:max-w-[600px] lg:scale-50 lg:translate-y-0 lg:p-10;
+  }
+
+  .overlay.active,
+  .overlay.closing {
+    @apply opacity-100 z-10;
+  }
+
+  .overlay.active .modal {
+    @apply animate-[slideUp_0.4s_forwards] lg:animate-[modalShow.4s_forwards];
+  }
+
+  .overlay.closing .modal {
+    @apply animate-[slideDown.4s_forwards] lg:animate-[modalHide.4s_forwards];
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes modalShow {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modalHide {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
